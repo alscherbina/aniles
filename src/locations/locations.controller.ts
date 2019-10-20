@@ -6,7 +6,7 @@ export class LocationsController {
   constructor(private readonly locationsService: LocationsService) {}
 
   @Get()
-  listLocations(): string {
-    return this.locationsService.getLocations();
+  async listLocations(): Promise<string> {
+    return await this.locationsService.getLocations();
   }
 }
