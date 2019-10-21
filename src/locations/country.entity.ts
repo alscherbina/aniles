@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryColumn, OneToMany, JoinColumn } from 'typeorm';
+import { Location } from './location.entity';
 
 @Entity()
 export class Country {
@@ -8,5 +9,6 @@ export class Country {
   @Column()
   title: string;
 
+  @OneToMany(type => Location, location => location.country)
   locations: Location[];
 }
