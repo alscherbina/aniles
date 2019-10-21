@@ -1,15 +1,18 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { EntityManager } from 'typeorm';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Location } from './location.entity';
 
 @Injectable()
 export class LocationsService {
-  constructor(private readonly entityManager: EntityManager) {}
+  constructor(
+    @InjectRepository(Location)
+    private readonly locationRepository: Repository<Location>,
+  ) {}
 
-  async getLocations(): Promise<string> {
-    const rawData = await this.entityManager.query(
-      `SELECT country.title as country, location.title as location, location.id FROM country, location  WHERE country.id=location.country_id order by country.title`,
-    );
+  async getLocations(): Promise<Location[]> {
     Logger.log('Locations list request');
-    return rawData;
+    let locations:Location[] = await this.locationRepository.find()
+    return locations;
   }
 }
