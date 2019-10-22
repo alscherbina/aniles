@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LocationsModule } from './locations/locations.module';
 import { Location } from './locations/location.entity';
 import { Country } from './locations/country.entity';
+import { BookingModule } from './booking/booking.module';
 
 dotenv.config();
 @Module({
@@ -18,7 +19,8 @@ dotenv.config();
       },
       entities: [Location, Country]
     }),
-    LocationsModule
+    LocationsModule,
+    BookingModule
   ],
 })
 export class AppModule {}
