@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsDate, IsUUID, MinDate } from 'class-validator';
+import { IsNotEmpty, IsDate, IsUUID } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CheckAvailabilityDto {
