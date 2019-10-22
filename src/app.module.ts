@@ -6,6 +6,7 @@ import { Location } from './locations/location.entity';
 import { Country } from './locations/country.entity';
 import { BookingModule } from './booking/booking.module';
 import { Offer } from './booking/offer.entity';
+import { Booking } from './booking/booking.entity';
 
 dotenv.config();
 @Module({
@@ -18,7 +19,7 @@ dotenv.config();
         max: process.env.PG_POOL_SIZE || 2,
         connectionTimeoutMillis: process.env.PG_CONNECTION_TIMEOUT || 0
       },
-      entities: [Location, Country, Offer]
+      entities: [Location, Country, Offer, Booking]
     }),
     LocationsModule,
     BookingModule

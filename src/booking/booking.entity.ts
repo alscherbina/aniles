@@ -1,19 +1,16 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class Offer {
+export class Booking {
   @PrimaryGeneratedColumn()
   id: string;
 
   @Column()
-  location_id: string;
+  offer_id: string;
 
   @Column()
-  offer_type: string;
-
-  @Column("money")
-  price: string;
+  start_date: Date;
 
   @Column()
-  qty: number;
+  end_date: Date;
 }
