@@ -1,5 +1,5 @@
 import { Controller, Get, Query, UsePipes } from '@nestjs/common';
-import { CheckAvailabilityDto } from './dto/check-availability.dto';
+import { CheckAvailabilityDto, CheckAvailabilityRO } from './dto/check-availability.dto';
 import { ValidationPipe } from './../shared/pipes/validation.pipe';
 import { BookingService } from './booking.service';
 
@@ -9,7 +9,7 @@ export class BookingController {
 
   @Get('availability')
   @UsePipes(new ValidationPipe())
-  async checkAvailability(@Query() availabilityParams: CheckAvailabilityDto): Promise<any> {
+  async checkAvailability(@Query() availabilityParams: CheckAvailabilityDto): Promise<CheckAvailabilityRO[]> {
     return this.bookingService.getAvaliableOffers(availabilityParams);
   }
 }
