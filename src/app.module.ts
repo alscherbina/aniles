@@ -22,5 +22,6 @@ dotenv.config();
     LocationsModule,
     BookingModule
   ],
+  exports: [TypeOrmModule]
 })
 export class AppModule {}
