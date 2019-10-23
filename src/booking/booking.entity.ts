@@ -5,12 +5,18 @@ export class Booking {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column()
-  offer_id: string;
+  @Column({
+    name: 'offer_id',
+  })
+  offerId: string;
 
-  @Column()
-  start_date: Date;
+  @Column({
+    name: 'start_date',
+  })
+  startDate: Date;
 
-  @Column()
-  end_date: Date;
+  @Column({
+    name: 'end_date',
+  })
+  endDate: Date;
 }

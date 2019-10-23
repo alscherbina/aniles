@@ -5,13 +5,17 @@ export class Offer {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column()
-  location_id: string;
+  @Column({
+    name: 'location_id',
+  })
+  locationId: string;
 
-  @Column()
-  offer_type: string;
+  @Column({
+    name: 'offer_type',
+  })
+  offerType: string;
 
-  @Column("money")
+  @Column('money')
   price: string;
 
   @Column()

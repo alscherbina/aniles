@@ -25,7 +25,7 @@ export class BookingService {
     let res = await this.entityManager
       .createQueryBuilder()
       .select('offer.id', 'id')
-      .addSelect('offer.offer_type', 'offer_type')
+      .addSelect('offer.offer_type', 'offerType')
       .addSelect('offer.qty - count(booking.offer_id)', 'available')
       .from(Offer, 'offer')
       .leftJoin(
@@ -42,24 +42,20 @@ export class BookingService {
     //Forcing "available" field conversion from string to number (see bug https://github.com/typeorm/typeorm/issues/2708)
     return res.map(
       item =>
-        new CheckAvailabilityRO(item.id, item.offer_type, +item.available),
+        new CheckAvailabilityRO(item.id, item.offerType, +item.available),
     );
   }
   async bookOffer(bookingParams: CreateBookingDto): Promise<CreateBookingRO> {
-    const { offerId, dateStart, dateEnd } = bookingParams;
-    const booking = this.bookingRepository.create({
-      offer_id: offerId,
-      start_date: dateStart,
-      end_date: dateEnd,
-    });
+    const { offerId, startDate, endDate } = bookingParams;
     let res;
     //Preventing double booking with pessimistic lock on offer
     await this.entityManager.transaction(async transactionalEntityManager => {
       //Lock offer record
       await this.lockOffer(transactionalEntityManager, offerId);
       //Ensure offer is still available
-      await this.ensureOfferAvailability(transactionalEntityManager, dateEnd, dateStart, offerId);
+      await this.ensureOfferAvailability(transactionalEntityManager, endDate, startDate, offerId);
       //Book offer
+      const booking = this.bookingRepository.create(bookingParams);
       res = await transactionalEntityManager.save(booking);
     });
     return res;

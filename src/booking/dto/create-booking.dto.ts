@@ -8,12 +8,12 @@ export class CreateBookingDto {
   @IsNotEmpty()
   @IsDate()
   @Type(() => Date)
-  readonly dateStart: Date;
+  readonly startDate: Date;
 
   @IsNotEmpty()
   @IsDate()
   @Type(() => Date)
-  readonly dateEnd: Date;
+  readonly endDate: Date;
 }
 
 export class CreateBookingRO {
