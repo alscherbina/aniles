@@ -14,7 +14,7 @@ dotenv.config();
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.PG_URI,
-      logging: true,
+      logging: process.env.NODE_ENV === 'development',
       extra: {
         max: process.env.PG_POOL_SIZE || 2,
         connectionTimeoutMillis: process.env.PG_CONNECTION_TIMEOUT || 0,
