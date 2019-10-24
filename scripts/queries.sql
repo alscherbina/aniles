@@ -20,8 +20,8 @@ INSERT INTO booking(offer_id, start_date, end_date) VALUES(2, '20191101', '20191
    SELECT offer.offer_type, offer.qty - count(booking.offer_id) AS available
      FROM offer
 LEFT JOIN booking  ON booking.offer_id = offer.id
-                  AND booking.start_date < '20191102'
-                  AND booking.end_date > '20191101'
+                  AND booking.start_date <= '20191112'
+                  AND booking.end_date >= '20191101'
     WHERE offer.location_id = '5f3543ae-3958-4966-b465-64715a8d0faf'
  GROUP BY offer.offer_type, offer.qty
    HAVING offer.qty - count(booking.offer_id) > 0
@@ -42,9 +42,9 @@ LEFT JOIN booking  ON booking.offer_id = offer.id
    SELECT offer.qty - count(booking.offer_id) AS numb
      FROM offer
 LEFT JOIN booking  ON booking.offer_id = offer.id
-                  AND booking.start_date < '20191102'
-                  AND booking.end_date > '20191101'
-    WHERE offer.id = 1
+                  AND booking.start_date <= '20191111'
+                  AND booking.end_date >= '20191110'
+    WHERE offer.id = 3
  GROUP BY offer.qty
    HAVING offer.qty - count(booking.offer_id) > 0
 

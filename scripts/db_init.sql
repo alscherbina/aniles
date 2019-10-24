@@ -27,6 +27,7 @@ CREATE TABLE booking (
   offer_id INTEGER NOT NULL,
   start_date DATE,
   end_date DATE,
+  CONSTRAINT valid_time_period CHECK (start_date < end_date),
   CONSTRAINT fk_booking_offer FOREIGN KEY (offer_id) REFERENCES offer(id) ON DELETE RESTRICT
 );
 
