@@ -17,7 +17,7 @@ export class BookingController {
   async checkAvailability(
     @Query() availabilityParams: CheckAvailabilityDto,
   ): Promise<CheckAvailabilityRO[]> {
-    return this.bookingService.getAvaliableOffers(availabilityParams);
+    return await this.bookingService.getAvaliableOffers(availabilityParams);
   }
 
   @Post()

@@ -3,6 +3,8 @@ import { BookingController } from './booking.controller';
 import { BookingService } from './booking.service';
 import { getRepositoryToken, getEntityManagerToken } from '@nestjs/typeorm';
 import { Booking } from './booking.entity';
+import { CheckAvailabilityDto, CheckAvailabilityRO } from './dto/check-availability.dto';
+import { CreateBookingDto } from './dto/create-booking.dto';
 
 const mockRepository = {};
 
@@ -13,7 +15,13 @@ describe('Booking Controller', () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [BookingController],
       providers: [
-        BookingService,
+        {
+          provide: BookingService,
+          useValue: {
+            getAvaliableOffers: jest.fn().mockResolvedValue([new CheckAvailabilityRO(1,'2',3)]),
+            bookOffer: jest.fn().mockResolvedValue(new Booking()),
+          }
+        },
         {
           provide: getRepositoryToken(Booking),
           useValue: mockRepository,
@@ -31,4 +39,17 @@ describe('Booking Controller', () => {
   it('should be defined ', () => {
     expect(controller).toBeDefined();
   });
+
+  test('checkAvailability() should return value of CheckAvailabilityRO[] type', async () => {
+    const avaliabilityParams = new CheckAvailabilityDto();
+    const offers = await controller.checkAvailability(avaliabilityParams);
+    expect(offers).toBeInstanceOf(Array);
+    expect(offers[0]).toBeInstanceOf(CheckAvailabilityRO);
+  })
+
+  test('bookOffer() should return value of Booking[] type', async () => {
+    const avaliabilityParams = new CreateBookingDto();
+    const offers = await controller.bookOffer(avaliabilityParams);
+    expect(offers).toBeInstanceOf(Booking);
+  })
 });
