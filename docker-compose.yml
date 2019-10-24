@@ -1,0 +1,26 @@
+version: "3"
+services:
+  api:
+    container_name: AnilesAPI
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+      args:
+        - NODE_ENV=production
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    command: npm start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    restart: always
+    environment:
+      - DB_USER=postgres
+      - DB_PASS=aniles
+    ports:
+      - 5432:5432
+

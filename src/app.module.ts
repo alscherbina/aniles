@@ -13,11 +13,11 @@ dotenv.config();
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: process.env.PG_URI,
+      url: process.env.PG_URI || 'postgres://postgres:aniles@postgres:5432/postgres',
       logging: process.env.NODE_ENV === 'development',
       extra: {
-        max: process.env.PG_POOL_SIZE || 2,
-        connectionTimeoutMillis: process.env.PG_CONNECTION_TIMEOUT || 0,
+        max: process.env.PG_POOL_SIZE || 10,
+        connectionTimeoutMillis: process.env.PG_CONNECTION_TIMEOUT || 100000,
       },
       entities: [Location, Country, Offer, Booking],
     }),

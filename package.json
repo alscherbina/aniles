@@ -66,6 +66,8 @@
     },
     "coverageDirectory": "./coverage",
     "testEnvironment": "node",
-    "setupFilesAfterEnv": ["jest-extended"]
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
   }
 }
