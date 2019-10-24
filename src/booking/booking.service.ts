@@ -44,6 +44,7 @@ export class BookingService {
       item => new CheckAvailabilityRO(item.id, item.offerType, +item.available),
     );
   }
+  
   async bookOffer(bookingParams: CreateBookingDto): Promise<Booking> {
     const { offerId, startDate, endDate } = bookingParams;
     let res;
