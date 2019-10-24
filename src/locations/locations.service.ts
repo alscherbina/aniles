@@ -12,7 +12,7 @@ export class LocationsService {
 
   async getLocations(): Promise<Location[]> {
     Logger.log('Locations list request');
-    let locations:Location[] = await this.locationRepository.find()
+    const locations: Location[] = await this.locationRepository.find();
     return locations;
   }
 }

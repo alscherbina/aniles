@@ -17,13 +17,13 @@ dotenv.config();
       logging: true,
       extra: {
         max: process.env.PG_POOL_SIZE || 2,
-        connectionTimeoutMillis: process.env.PG_CONNECTION_TIMEOUT || 0
+        connectionTimeoutMillis: process.env.PG_CONNECTION_TIMEOUT || 0,
       },
-      entities: [Location, Country, Offer, Booking]
+      entities: [Location, Country, Offer, Booking],
     }),
     LocationsModule,
-    BookingModule
+    BookingModule,
   ],
-  exports: [TypeOrmModule]
+  exports: [TypeOrmModule],
 })
 export class AppModule {}

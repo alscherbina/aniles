@@ -3,7 +3,7 @@ import { BookingService } from './booking.service';
 import { getRepositoryToken, TypeOrmModule, getEntityManagerToken } from '@nestjs/typeorm';
 import { Booking } from './booking.entity';
 
-let mockRepository = {};
+const mockRepository = {};
 
 describe('BookingService', () => {
   let service: BookingService;

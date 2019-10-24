@@ -3,7 +3,7 @@ import { LocationsService } from './locations.service';
 import { TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
 import { Location } from './location.entity';
 
-let mockRepository = {};
+const mockRepository = {};
 
 describe('LocationsService', () => {
   let service: LocationsService;

@@ -4,7 +4,7 @@ import { LocationsService } from './locations.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Location } from './location.entity';
 
-let mockRepository = {};
+const mockRepository = {};
 
 describe('Locations Controller', () => {
   let controller: LocationsController;

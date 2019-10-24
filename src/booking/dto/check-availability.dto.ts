@@ -18,5 +18,5 @@ export class CheckAvailabilityDto {
 }
 
 export class CheckAvailabilityRO {
-  constructor(readonly offerId: number, readonly offerType: string, readonly available: number) {};
+  constructor(readonly offerId: number, readonly offerType: string, readonly available: number) {}
 }
