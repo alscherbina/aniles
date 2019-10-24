@@ -21,7 +21,7 @@ export class BookingService {
   async getAvaliableOffers(
     params: CheckAvailabilityDto,
   ): Promise<CheckAvailabilityRO[]> {
-    const { locationId, dateStart, dateEnd } = params;
+    const { locationId, startDate, endDate } = params;
     const res = await this.entityManager
       .createQueryBuilder()
       .select('offer.id', 'id')
@@ -31,8 +31,8 @@ export class BookingService {
       .leftJoin(
         'booking',
         'booking',
-        'booking.offer_id = offer.id and booking.start_date < :dateEnd and booking.end_date > :dateStart',
-        { dateEnd, dateStart },
+        'booking.offer_id = offer.id and booking.start_date < :endDate and booking.end_date > :startDate',
+        { endDate, startDate },
       )
       .where('offer.location_id = :locationId', { locationId })
       .groupBy('offer.id')

@@ -16,6 +16,7 @@ export class BookingController {
   @Get('availability')
   @UsePipes(new ValidationPipe())
   @ApiOkResponse({ description: 'List available offers for specific location and period', type: [CheckAvailabilityRO] })
+  @ApiBadRequestResponse({ description: 'Input data validation failed', type: HttpException })
   async checkAvailability(
     @Query() availabilityParams: CheckAvailabilityDto,
   ): Promise<CheckAvailabilityRO[]> {
