@@ -1,8 +1,12 @@
 import { Controller, Get, Query, UsePipes, Post, Body } from '@nestjs/common';
-import { CheckAvailabilityDto, CheckAvailabilityRO } from './dto/check-availability.dto';
+import {
+  CheckAvailabilityDto,
+  CheckAvailabilityRO,
+} from './dto/check-availability.dto';
 import { ValidationPipe } from './../shared/pipes/validation.pipe';
 import { BookingService } from './booking.service';
-import { CreateBookingDto, CreateBookingRO } from './dto/create-booking.dto';
+import { CreateBookingDto } from './dto/create-booking.dto';
+import { Booking } from './booking.entity';
 
 @Controller('booking')
 export class BookingController {
@@ -10,13 +14,15 @@ export class BookingController {
 
   @Get('availability')
   @UsePipes(new ValidationPipe())
-  async checkAvailability(@Query() availabilityParams: CheckAvailabilityDto): Promise<CheckAvailabilityRO[]> {
+  async checkAvailability(
+    @Query() availabilityParams: CheckAvailabilityDto,
+  ): Promise<CheckAvailabilityRO[]> {
     return this.bookingService.getAvaliableOffers(availabilityParams);
   }
 
   @Post()
   @UsePipes(new ValidationPipe())
-  async bookOffer(@Body() bookingParams: CreateBookingDto): Promise<CreateBookingRO> {
-      return await this.bookingService.bookOffer(bookingParams);
+  async bookOffer(@Body() bookingParams: CreateBookingDto): Promise<Booking> {
+    return await this.bookingService.bookOffer(bookingParams);
   }
 }

@@ -6,7 +6,7 @@ import {
   CheckAvailabilityRO,
 } from './dto/check-availability.dto';
 import { Offer } from './offer.entity';
-import { CreateBookingDto, CreateBookingRO } from './dto/create-booking.dto';
+import { CreateBookingDto } from './dto/create-booking.dto';
 import { Booking } from './booking.entity';
 
 @Injectable()
