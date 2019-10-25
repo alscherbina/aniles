@@ -28,3 +28,5 @@ API endpoints should be available via _http://localhost:3000/api_ URI.
 See Swagger doc under:
 _http://host:3000/docs_
   
+# Example requests
+[POSTMAN collection](Aniles.postman_collection.json)
