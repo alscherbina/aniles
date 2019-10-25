@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "18fd2bf1-0a3e-422b-82ea-84823306097c",
+		"name": "Aniles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3001/api/locations",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Awesome New Name 2 !!\",\r\n\"contestId\": \"5d6e67f7310c222c106835cd\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/locations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3001/api/booking/availability?locationId=5f3543ae-3958-4966-b465-64715a8d0faf&dateStart=2019-11-01&dateEnd=2019-11-01",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/booking/availability?locationId=5f3543ae-3958-4966-b465-64715a8d0faf&startDate=2019-11-01&endDate=2019-11-03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"booking",
+						"availability"
+					],
+					"query": [
+						{
+							"key": "locationId",
+							"value": "5f3543ae-3958-4966-b465-64715a8d0faf"
+						},
+						{
+							"key": "startDate",
+							"value": "2019-11-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2019-11-03"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3001/api/booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"offerId\": 3,\n\"startDate\": \"2019-11-01\",\n\"endDate\":  \"2019-11-04\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/booking",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
