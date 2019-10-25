@@ -28,12 +28,15 @@ export class CheckAvailabilityRO {
   readonly offerId: number;
   @ApiModelProperty({ example: 'Dorm' })
   readonly offerType: string;
+  @ApiModelProperty({ example: '$15.00' })
+  readonly price: string;
   @ApiModelProperty({ example: 7 })
   readonly available: number;
 
-  constructor(offerId: number, offerType: string, available: number) {
+  constructor(offerId: number, offerType: string, price: string, available: number) {
     this.offerId = offerId;
     this.offerType = offerType;
+    this.price = price;
     this.available = available;
   }
 }

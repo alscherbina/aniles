@@ -26,6 +26,7 @@ export class BookingService {
       .createQueryBuilder()
       .select('offer.id', 'id')
       .addSelect('offer.offer_type', 'offerType')
+      .addSelect('offer.price', 'price')
       .addSelect('offer.qty - count(booking.offer_id)', 'available')
       .from(Offer, 'offer')
       .leftJoin(
@@ -41,7 +42,7 @@ export class BookingService {
       .getRawMany();
     // Forcing "available" field conversion from string to number (see bug https://github.com/typeorm/typeorm/issues/2708)
     return res.map(
-      item => new CheckAvailabilityRO(item.id, item.offerType, +item.available),
+      item => new CheckAvailabilityRO(item.id, item.offerType, item.price, +item.available),
     );
   }
 
