@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:3001/api/locations",
+			"name": "http://localhost:3000/api/locations",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -16,8 +16,8 @@
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -40,7 +40,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:3001/api/booking/availability?locationId=5f3543ae-3958-4966-b465-64715a8d0faf&dateStart=2019-11-01&dateEnd=2019-11-01",
+			"name": "http://localhost:3000/api/booking/availability?locationId=5f3543ae-3958-4966-b465-64715a8d0faf&dateStart=2019-11-01&dateEnd=2019-11-01",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -75,14 +75,14 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:3001/api/booking",
+			"name": "http://localhost:3000/api/booking",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -90,12 +90,12 @@
 					"raw": "{\n\"offerId\": 3,\n\"startDate\": \"2019-11-01\",\n\"endDate\":  \"2019-11-04\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:3001/api/booking",
+					"raw": "http://localhost:3000/api/booking",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3001",
+					"port": "3000",
 					"path": [
 						"api",
 						"booking"
