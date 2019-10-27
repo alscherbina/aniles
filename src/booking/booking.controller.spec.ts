@@ -18,7 +18,7 @@ describe('Booking Controller', () => {
         {
           provide: BookingService,
           useValue: {
-            getAvaliableOffers: jest.fn().mockResolvedValue([new CheckAvailabilityRO(1,'2',3)]),
+            getAvaliableOffers: jest.fn().mockResolvedValue([new CheckAvailabilityRO(1,'2','3',4)]),
             bookOffer: jest.fn().mockResolvedValue(new Booking()),
           }
         },
