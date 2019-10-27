@@ -15,7 +15,7 @@ export class Offer {
   })
   offerType: string;
 
-  @Column('money')
+  @Column()
   price: string;
 
   @Column()
